@@ -1,0 +1,11 @@
+<div class="saturation"
+  ref="container"
+  r-style={{background: bgColor}}
+  on-mousedown={this.handleMouseDown($event)}
+>
+  <div class="saturation-white"></div>
+  <div class="saturation-black"></div>
+  <div class="saturation-pointer" r-style={{top: pointerTop, left: pointerLeft}}>
+    <div class="saturation-circle"></div>
+  </div>
+</div>

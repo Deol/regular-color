@@ -1,0 +1,11 @@
+<div class="c-hue {direction | directionClass}">
+  <div class="c-hue-container" ref="container"
+    on-mousedown={this.handleMouseDown($event)}
+    on-touchmove={this.handleChange($event)}
+    on-touchstart={this.handleChange($event)}
+  >
+    <div class="c-hue-pointer" r-style={{top: pointerTop, left: pointerLeft}}>
+      <div class="c-hue-picker"></div>
+    </div>
+  </div>
+</div>

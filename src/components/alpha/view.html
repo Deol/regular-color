@@ -1,0 +1,17 @@
+<div class="c-alpha">
+    <div class="c-alpha-checkboard-wrap">
+        <checkboard></checkboard>
+    </div>
+    <div class="c-alpha-gradient" r-style={{background: gradientColor}}></div>
+    <div
+        ref="container"
+        class="c-alpha-container"
+        on-touchmove={this.handleChange($event)}
+        on-touchstart={this.handleChange($event)}
+        on-mousedown={this.handleMouseDown($event)}
+    >
+        <div class="c-alpha-pointer" r-style={{left: dealLeft}}>
+            <div class="c-alpha-picker"></div>
+        </div>
+    </div>
+</div>

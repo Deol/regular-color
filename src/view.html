@@ -1,0 +1,71 @@
+<div class="chrome">
+  <div class="chrome-saturation-wrap">
+    <saturation colors={colors} on-change={this.childChange($event)}></saturation>
+  </div>
+  <div class="chrome-chrome-body">
+    <div class="chrome-controls">
+      <div class="chrome-color-wrap">
+        <div class="chrome-active-color" r-style={{background: activeColor}}></div>
+      </div>
+
+      <div class="chrome-sliders">
+        <div class="chrome-hue-wrap">
+          <hue colors={colors} on-change={this.childChange($event)}></hue>
+        </div>
+        <div class="chrome-alpha-wrap">
+          <alpha colors={colors} on-change={this.childChange($event)}></alpha>
+        </div>
+      </div>
+    </div>
+    <div class="chrome-fields-wrap">
+        <div class="chrome-fields" r-hide={fieldsIndex !== 0}>
+          <!-- hex -->
+          <div class="chrome-field">
+            <ed-in label="hex" value={colors.hex} on-change={this.inputChange($event)}></ed-in>
+          </div>
+        </div>
+        <div class="chrome-fields" r-hide={fieldsIndex !== 1}>
+          <!-- rgba -->
+          <div class="chrome-field">
+            <ed-in label="r" value={colors.rgba.r} on-change={this.inputChange($event)}></ed-in>
+          </div>
+          <div class="chrome-field">
+            <ed-in label="g" value={colors.rgba.g} on-change={this.inputChange($event)}></ed-in>
+          </div>
+          <div class="chrome-field">
+            <ed-in label="b" value={colors.rgba.b} on-change={this.inputChange($event)}></ed-in>
+          </div>
+          <div class="chrome-field">
+            <ed-in label="a" value={colors.a} arrow-offset="0.01" max="1" on-change={this.inputChange($event)}></ed-in>
+          </div>
+        </div>
+        <div class="chrome-fields" r-hide={fieldsIndex !== 2}>
+          <!-- hsla -->
+          <div class="chrome-field">
+            <ed-in label="h" value={colors.hsl.h} on-change={this.inputChange($event)}></ed-in>
+          </div>
+          <div class="chrome-field">
+            <ed-in label="s" value={colors.hsl.s} on-change={this.inputChange($event)}></ed-in>
+          </div>
+          <div class="chrome-field">
+            <ed-in label="l" value={colors.hsl.l} on-change={this.inputChange($event)}></ed-in>
+          </div>
+          <div class="chrome-field">
+            <ed-in label="a" value={colors.a} arrow-offset="0.01" max="1" on-change={this.inputChange($event)}></ed-in>
+          </div>
+        </div>
+        <div class="chrome-toggle-btn" on-click={this.toggleViews()}>
+          <div class="chrome-icon">
+            <svg style="width:24px; height:24px" viewBox="0 0 24 24"
+              on-mouseover={this.showHighlight()}
+              on-mouseenter={this.showHighlight()}
+              on-mouseout={this.hideHighlight()}
+            >
+              <path fill="#333" d="M12,18.17L8.83,15L7.42,16.41L12,21L16.59,16.41L15.17,15M12,5.83L15.17,9L16.58,7.59L12,3L7.41,7.59L8.83,9L12,5.83Z" />
+            </svg>
+          </div>
+          <div class="chrome-icon-highlight" r-hide={!highlight}></div>
+        </div>
+    </div>
+  </div>
+</div>

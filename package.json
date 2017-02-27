@@ -1,0 +1,16 @@
+{
+  "name": "regular-color",
+  "version": "0.0.1",
+  "description": "Color of Regular Components",
+  "main": "src/chrome.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Aeo <aeolus0xy@gmail.com>",
+  "dependencies": {
+    "lodash.throttle": "^4.1.1",
+    "regular-ui": "^0.1.8",
+    "tinycolor2": "^1.4.1"
+  },
+  "license": "MIT"
+}

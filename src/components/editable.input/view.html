@@ -1,0 +1,9 @@
+<div class="editable-input">
+  <input
+    r-model={value}
+    class="editable-input-input"
+    on-keydown={this.handleKeyDown($event)}
+    on-input={this.update($event)}
+  >
+  <span class="editable-input-label">{label}</span>
+</div>
