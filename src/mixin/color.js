@@ -1,13 +1,14 @@
 var RGUI = require('regular-ui');
 var tinycolor = require('tinycolor2');
+var _ = require('../assets/util.js');
 
 function _colorChange(colors, oldHue) {
-  if (colors.a && (colors.a > 1 || colors.a < 0)) {
-    colors.a = Number(colors.a > 1);
-  }
   var color;
-  colors.a = colors.a || 1;
-  if(colors.hex) {
+  if (!colors.a && colors.a !== 0) {
+      colors.a = 1;
+  }
+  colors.a = _.limitScope(colors.a, 0, 1);
+  if (colors.hex) {
     color = tinycolor(colors.hex);
     color.setAlpha(colors.a);
   } else {

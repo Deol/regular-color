@@ -19,19 +19,22 @@ var EditableInput = RGUI.Component.extend({
   handleKeyDown: function(e) {
     var value = this.data.value;
     var number = Number(value);
-    if (typeof number === 'number' && (number || number === 0)) {
-      var amount = Number(this.data.arrowOffset) || 1;
+    var amount = Number(this.data.arrowOffset) || 1;
 
+    // Decimal places
+    var multiple = Math.pow(10, amount.toString().split('.')[1].length);
+
+    if (!isNaN(number)) {
       // Up
       if (e.keyCode === 38 || e.which === 38) {
-        value = number + amount;
+        value = Math.round((number + amount) * multiple) / multiple;
         this.handleChange(value);
         e.preventDefault();
       }
 
       // Down
-      if (e.keyCode === 40 || e.which === 40) {
-        value = number - amount;
+      if (number !== 0 && (e.keyCode === 40 || e.which === 40)) {
+        value = Math.round((number - amount) * multiple) / multiple;
         this.handleChange(value);
         e.preventDefault();
       }
