@@ -14,8 +14,8 @@ var editableinput = require('./components/editable.input');
 
 var _ = require('./assets/util');
 
-var Color = BaseComponent.extend({
-  name: 'color',
+var EyeDropper = BaseComponent.extend({
+  name: 'eyedropper',
   template: tpl,
   config: function(data) {
     data.fields = ['hex', 'rgba', 'hsla'];
@@ -75,4 +75,4 @@ var Color = BaseComponent.extend({
   }
 });
 
-module.exports = Color;
+module.exports = EyeDropper;
