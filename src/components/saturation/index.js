@@ -1,9 +1,9 @@
-var RGUI = require('regular-ui');
+var BaseComponent = require('../../base/component');
 var tpl = require('./view.html');
 
-var throttle = require('lodash.throttle')
+var throttle = require('lodash.throttle');
 
-var Saturation = RGUI.Component.extend({
+var Saturation = BaseComponent.extend({
   name: 'saturation',
   template: tpl,
   throttle: throttle(function(fn, data) {
@@ -38,22 +38,8 @@ var Saturation = RGUI.Component.extend({
       source: 'rgb'
     })
   },
-  onChange: function(param) {
-    this.$emit('change', param);
-  },
-  handleMouseDown: function(e) {
-    this.handleChange(e, true);
-    this.handleChange = this.handleChange.bind(this);
-    this.handleMouseUp = this.handleMouseUp.bind(this);
-    window.addEventListener('mousemove', this.handleChange);
-    window.addEventListener('mouseup', this.handleMouseUp);
-  },
-  handleMouseUp: function(e) {
-    this.unbindEventListeners();
-  },
-  unbindEventListeners: function() {
-    window.removeEventListener('mousemove', this.handleChange);
-    window.removeEventListener('mouseup', this.handleMouseUp);
+  onChange: function(colors) {
+    this.$emit('change', colors);
   },
   computed: {
     bgColor: function() {

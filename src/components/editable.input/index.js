@@ -21,45 +21,22 @@ var EditableInput = RGUI.Component.extend({
     var number = Number(value);
     var amount = Number(this.data.arrowOffset) || 1;
 
-    // Decimal places
-    var multiple = Math.pow(10, amount.toString().split('.')[1].length);
-
-    if (!isNaN(number)) {
-      // Up
-      if (e.keyCode === 38 || e.which === 38) {
-        value = Math.round((number + amount) * multiple) / multiple;
-        this.handleChange(value);
-        e.preventDefault();
-      }
-
-      // Down
-      if (number !== 0 && (e.keyCode === 40 || e.which === 40)) {
-        value = Math.round((number - amount) * multiple) / multiple;
-        this.handleChange(value);
-        e.preventDefault();
-      }
+    if (isNaN(number)) {
+        return;
     }
-  },
-  handleBlur: function(e) {
-    console.log(e);
-  },
-  handleDrag: function(e) {
-    console.log(e);
-  },
-  handleMouseDown: function(e) {
-    console.log(e);
-  }
-}).filter({
-  maxFilter: {
-    get: function(value) {
-      if (this.data.max && value > this.data.max) {
-        return this.max;
-      } else {
-        return value;
-      }
-    },
-    set: function(value, oldVal) {
-      return value;
+
+    // Up
+    if (e.keyCode === 38 || e.which === 38) {
+      value = number + amount;
+      this.handleChange(value);
+      e.preventDefault();
+    }
+
+    // Down
+    if (e.keyCode === 40 || e.which === 40) {
+      value = number - amount;
+      this.handleChange(value);
+      e.preventDefault();
     }
   }
 });

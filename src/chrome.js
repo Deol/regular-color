@@ -2,7 +2,7 @@
  * Created by Aeo on 2017/02/16.
  * Chrome EyeDropper for Regular
  */
-var BaseComponent = require('./mixin/color');
+var BaseComponent = require('./base/processor');
 var tpl = require('./view.html');
 
 // components
@@ -11,6 +11,8 @@ var alpha = require('./components/alpha');
 var checkboard = require('./components/checkboard');
 var saturation = require('./components/saturation');
 var editableinput = require('./components/editable.input');
+
+var _ = require('./assets/util');
 
 var Color = BaseComponent.extend({
   name: 'color',
@@ -42,12 +44,12 @@ var Color = BaseComponent.extend({
         hex: colors.hex,
         source: 'hex'
       })
-    } else if (colors.r || colors.g || colors.b || colors.a) {
+    } else if (_.hasSome(colors, ['r', 'g', 'b', 'a'])) {
       this.colorChange({
-        r: colors.r || this.data.colors.rgba.r,
-        g: colors.g || this.data.colors.rgba.g,
-        b: colors.b || this.data.colors.rgba.b,
-        a: colors.a || this.data.colors.rgba.a,
+        r: _.has(colors, 'r') ? colors.r : this.data.colors.rgba.r,
+        g: _.has(colors, 'g') ? colors.g : this.data.colors.rgba.g,
+        b: _.has(colors, 'b') ? colors.b : this.data.colors.rgba.b,
+        a: _.has(colors, 'a') ? colors.a : this.data.colors.rgba.a,
         source: 'rgba'
       })
     }

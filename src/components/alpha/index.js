@@ -1,7 +1,10 @@
-var checkboard = require('../checkboard/index.js');
+var BaseComponent = require('../../base/component');
 var tpl = require('./view.html');
 
-var Alpha = RGUI.Component.extend({
+var checkboard = require('../checkboard/index');
+var _ = require('../../assets/util');
+
+var Alpha = BaseComponent.extend({
   name: 'alpha',
   template: tpl,
   handleChange: function(e, skip) {
@@ -9,14 +12,14 @@ var Alpha = RGUI.Component.extend({
     var container = this.$refs.container;
     var containerWidth = container.clientWidth;
     var left = (e.pageX || e.touches[0].pageX) - (container.getBoundingClientRect().left + window.pageXOffset);
-
     var a;
+
     if (left < 0) {
       a = 0;
     } else if (left > containerWidth) {
       a = 1;
     } else {
-      a = Math.round(left * 100 / containerWidth) / 100;
+      a = left / containerWidth;
     }
 
     if (this.data.colors.a !== a) {
@@ -28,20 +31,6 @@ var Alpha = RGUI.Component.extend({
         source: 'rgba'
       });
     }
-  },
-  handleMouseDown: function(e) {
-    this.handleChange(e, true);
-    this.handleChange = this.handleChange.bind(this);
-    this.handleMouseUp = this.handleMouseUp.bind(this);
-    window.addEventListener('mousemove', this.handleChange);
-    window.addEventListener('mouseup', this.handleMouseUp);
-  },
-  handleMouseUp: function() {
-    this.unbindEventListeners();
-  },
-  unbindEventListeners: function() {
-    window.removeEventListener('mousemove', this.handleChange);
-    window.removeEventListener('mouseup', this.handleMouseUp);
   },
   computed: {
     gradientColor: function() {

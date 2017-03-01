@@ -10,7 +10,6 @@ var _checkboardCache = {};
  * @param {String} c2 hex color
  * @param {Number} size
  */
-
 function renderCheckboard(c1, c2, size) {
   // Dont Render On Server
   if (typeof document === 'undefined') {
@@ -39,7 +38,6 @@ function renderCheckboard(c1, c2, size) {
  * @param {String} c2 hex color
  * @param {Number} size
  */
-
 function getCheckboard(c1, c2, size) {
   var key = c1 + ',' + c2 + ',' + size;
 
