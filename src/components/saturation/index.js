@@ -1,7 +1,7 @@
 var BaseComponent = require('../../base/component');
 var tpl = require('./view.html');
 
-var throttle = require('lodash.throttle');
+var throttle = require('../../assets/util.js').throttle;
 
 var Saturation = BaseComponent.extend({
   name: 'saturation',

@@ -1,4 +1,4 @@
-var RGUI = require('regular-ui');
+var Regular = require('regularjs');
 var tinycolor = require('tinycolor2');
 var _ = require('../assets/util');
 
@@ -46,7 +46,7 @@ function _colorChange(colors, oldHue) {
   }
 }
 
-var BaseComponent = RGUI.Component.extend({
+var BaseComponent = Regular.extend({
   _colorChange: _colorChange,
   colorChange: function(colors, oldHue) {
     this.data.colors = this._colorChange(colors, oldHue || this.data.oldHue);

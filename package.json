@@ -8,8 +8,7 @@
   },
   "author": "Aeo <aeolus0xy@gmail.com>",
   "dependencies": {
-    "lodash.throttle": "^4.1.1",
-    "regular-ui": "^0.1.8",
+    "regularjs": "^0.6.0-beta.1",
     "tinycolor2": "^1.4.1"
   },
   "license": "MIT"
