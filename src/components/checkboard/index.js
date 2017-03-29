@@ -1,4 +1,4 @@
-var RGUI = require('regular-ui');
+var Regular = require('regularjs');
 var tpl = require('./view.html');
 
 var _checkboardCache = {};
@@ -50,7 +50,7 @@ function getCheckboard(c1, c2, size) {
   }
 }
 
-var Checkboard = RGUI.Component.extend({
+var Checkboard = Regular.extend({
   name: 'checkboard',
   template: tpl,
   config: function(data) {

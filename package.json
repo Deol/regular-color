@@ -2,14 +2,28 @@
   "name": "regular-color",
   "version": "0.0.1",
   "description": "Color of Regular Components",
-  "main": "src/eyedropper.js",
+  "main": "dist/eyedropper.min.js",
   "scripts": {
+    "cooking": "cross-env cooking build -- -p",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": "Deol/regular-color",
+  "bugs": {
+    "url": "https://github.com/Deol/regular-color/issues"
+  },
+  "keywords": [
+    "eyedropper",
+    "regular"
+  ],
   "author": "Aeo <aeolus0xy@gmail.com>",
   "dependencies": {
     "regularjs": "^0.6.0-beta.1",
     "tinycolor2": "^1.4.1"
+  },
+  "devDependencies": {
+    "cooking": "^1.5.0",
+    "html-loader": "^0.4.5",
+    "raw-loader": "^0.5.1"
   },
   "license": "MIT"
 }

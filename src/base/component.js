@@ -1,6 +1,6 @@
-var RGUI = require('regular-ui');
+var Regular = require('regularjs');
 
-var BaseComponent = RGUI.Component.extend({
+var BaseComponent = Regular.extend({
   handleMouseDown: function(e) {
     this.handleChange(e, true);
     this.handleChange = this.handleChange.bind(this);

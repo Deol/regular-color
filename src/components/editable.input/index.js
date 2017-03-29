@@ -1,7 +1,7 @@
-var RGUI = require('regular-ui');
+var Regular = require('regularjs');
 var tpl = require('./view.html');
 
-var EditableInput = RGUI.Component.extend({
+var EditableInput = Regular.extend({
   name: 'ed-in',
   template: tpl,
   config: function(data) {

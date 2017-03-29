@@ -1,6 +1,6 @@
 /*
  * Created by Aeo on 2017/02/16.
- * Chrome EyeDropper for Regular
+ * Chrome EyeDropper for Regularjs
  */
 var BaseComponent = require('./base/processor');
 var tpl = require('./view.html');
