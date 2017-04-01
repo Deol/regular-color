@@ -3,7 +3,7 @@
  * Chrome EyeDropper for Regularjs
  */
 var BaseComponent = require('./base/processor');
-var tpl = require('./view.html');
+var tpl = require('./eyedropper.html');
 
 // components
 var hue = require('./components/hue');

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>EyeDropper</title>
+</head>
+<body>
+    <div id="app"></div>
+    <!-- 引入regular.js -->
+    <script src="https://rawgit.com/regularjs/regular/master/dist/regular.js"></script>
+    <script>
+        var color = require('./src/eyedropper.js');
+        var Page = Regular.extend({
+            template: '<eyedropper colors={defaultProps} on-changeColor={this.changeColor($event)}></eyedropper>',
+            config: function(data) {
+                data.defaultProps = {
+                    hex: '#194d33',
+                    hsl: {
+                        h: 150,
+                        s: 0.5,
+                        l: 0.2,
+                        a: 1
+                    },
+                    hsv: {
+                        h: 150,
+                        s: 0.66,
+                        v: 0.30,
+                        a: 1
+                    },
+                    rgba: {
+                        r: 25,
+                        g: 77,
+                        b: 51,
+                        a: 1
+                    },
+                    a: 1
+                };
+                this.supr(data);
+            },
+            changeColor: function(colors) {
+                this.data.defaultProps = colors;
+            }
+        });
+        new Page({data: {}}).$inject(document.getElementById("box"));
+    </script>
+</body>
+</html>

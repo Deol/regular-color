@@ -1,0 +1,48 @@
+.c-alpha {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+}
+
+.c-alpha-checkboard-wrap {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	overflow: hidden;
+}
+
+.c-alpha-gradient {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+}
+
+.c-alpha-container {
+	cursor: pointer;
+	position: relative;
+	z-index: 2;
+	height: 100%;
+	margin: 0 3px;
+}
+
+.c-alpha-pointer {
+	z-index: 2;
+	position: absolute;
+}
+
+.c-alpha-picker {
+	cursor: pointer;
+	width: 4px;
+	border-radius: 1px;
+	height: 8px;
+	box-shadow: 0 0 2px rgba(0,0,0,0.6);
+	background: #fff;
+	margin-top: 1px;
+	transform: translateX(-2px);
+}

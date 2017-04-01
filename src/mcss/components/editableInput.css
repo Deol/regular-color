@@ -1,0 +1,13 @@
+.editable-input {
+	position: relative;
+}
+
+.editable-input-input {
+	padding: 0;
+	border: 0;
+	outline: none;
+}
+
+.editable-input-label {
+	text-transform: capitalize;
+}
