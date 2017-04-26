@@ -7,7 +7,7 @@
     <title>EyeDropper</title>
 </head>
 <body>
-    <div id="app"></div>
+    <div id="box"></div>
     <!-- 引入regular.js -->
     <script src="https://rawgit.com/regularjs/regular/master/dist/regular.js"></script>
     <script>
@@ -43,7 +43,7 @@
                 this.data.defaultProps = colors;
             }
         });
-        new Page({data: {}}).$inject(document.getElementById("box"));
+        new Page({data: {}}).$inject(document.getElementById('box'));
     </script>
 </body>
 </html>

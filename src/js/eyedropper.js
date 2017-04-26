@@ -2,6 +2,8 @@
  * Created by Aeo on 2017/02/16.
  * Chrome EyeDropper for Regularjs
  */
+require('../mcss/index.mcss');
+
 var BaseComponent = require('./base/processor');
 var tpl = require('./eyedropper.html');
 
