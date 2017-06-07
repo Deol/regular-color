@@ -1,4 +1,4 @@
-var _ = {};
+let _ = {};
 
 /**
  * 节流
@@ -8,22 +8,29 @@ var _ = {};
  * @return {Function}
  */
 _.throttle = function(func, wait, options) {
-    var timeout, context, args, result;
-    var previous = 0;
-    if (!options) options = {};
+    let timeout, context, args, result;
+    let previous = 0;
+    if (!options) {
+        options = {};
+    }
 
-    var later = function() {
+    let later = function() {
         previous = options.leading === false ? 0 : Date.now();
         timeout = null;
         result = func.apply(context, args);
-        if (!timeout) context = args = null;
+        if (!timeout) {
+            context = args = null;
+        }
     };
 
-    var throttled = function() {
-        var now = Date.now();
-        if (!previous && options.leading === false) previous = now;
-        var remaining = wait - (now - previous);
+    let throttled = function() {
+        let now = Date.now();
+        if (!previous && options.leading === false) {
+            previous = now;
+        }
+        let remaining = wait - (now - previous);
         context = this;
+        // eslint-disable-next-line prefer-rest-params
         args = arguments;
         if (remaining <= 0 || remaining > wait) {
             if (timeout) {
@@ -32,7 +39,9 @@ _.throttle = function(func, wait, options) {
             }
             previous = now;
             result = func.apply(context, args);
-            if (!timeout) context = args = null;
+            if (!timeout) {
+                context = args = null;
+            }
         } else if (!timeout && options.trailing !== false) {
             timeout = setTimeout(later, remaining);
         }
@@ -65,10 +74,10 @@ _.has = function(obj, name) {
  * @return {boolean}     是否部分存在
  */
 _.hasSome = function(obj, arr) {
-    return arr.some(function(item) {
+    return arr.some((item) => {
         return _.has(obj, item);
-    })
-}
+    });
+};
 
 /**
  * 判断正浮点数
@@ -77,7 +86,7 @@ _.hasSome = function(obj, arr) {
  */
 _.hasNum = function(num) {
     return /^\d+(\.\d+)?$/ig.test(num);
-}
+};
 
 /**
  * 某个值是否在所给范围内
@@ -94,10 +103,10 @@ _.limitScope = function(value, min, max) {
         return min;
     } else if (value > max) {
         return max;
-    } else {
-        return value;
-    }
-}
+    } 
+    return value;
+    
+};
 
 /**
  * 获取传入数字转化为整数时的倍数
@@ -106,7 +115,7 @@ _.limitScope = function(value, min, max) {
  */
 _.getMultiple = function(bits) {
     return Math.pow(10, bits);
-}
+};
 
 /**
  * 限制小数位数
@@ -116,6 +125,6 @@ _.getMultiple = function(bits) {
  */
 _.limitDecimal = function(num, bits) {
     return Math.round(num * _.getMultiple(bits)) / _.getMultiple(bits);
-}
+};
 
 module.exports = _;
