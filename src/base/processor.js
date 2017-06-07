@@ -1,6 +1,6 @@
-let Regular = require('regularjs');
-let tinycolor = require('tinycolor2');
-let _ = require('../assets/util');
+import Regular from 'regularjs';
+import tinycolor from 'tinycolor2';
+import _ from '../assets/util';
 
 function _colorChange(colors, oldHue) {
     let color;

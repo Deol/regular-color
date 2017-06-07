@@ -1,11 +1,11 @@
-let BaseComponent = require('../../base/component');
-let tpl = require('./view.html');
+import BaseComponent from '../../base/component';
+import template from './view.html';
 
 let throttle = require('../../assets/util.js').throttle;
 
 let Saturation = BaseComponent.extend({
     name: 'saturation',
-    template: tpl,
+    template,
     throttle: throttle((fn, data) => {
         return fn(data);
     }, 50),

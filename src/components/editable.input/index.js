@@ -1,9 +1,9 @@
-let Regular = require('regularjs');
-let tpl = require('./view.html');
+import Regular from 'regularjs';
+import template from './view.html';
 
 let EditableInput = Regular.extend({
     name: 'ed-in',
-    template: tpl,
+    template,
     config(data) {
         data.arrowOffset = data.arrowOffset || 1;
         this.supr(data);
@@ -25,14 +25,14 @@ let EditableInput = Regular.extend({
             return;
         }
 
-    // Up
+        // Up
         if (e.keyCode === 38 || e.which === 38) {
             value = number + amount;
             this.handleChange(value);
             e.preventDefault();
         }
 
-    // Down
+        // Down
         if (e.keyCode === 40 || e.which === 40) {
             value = number - amount;
             this.handleChange(value);

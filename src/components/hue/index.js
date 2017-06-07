@@ -1,5 +1,5 @@
-let BaseComponent = require('../../base/component');
-let tpl = require('./view.html');
+import BaseComponent from '../../base/component';
+import template from './view.html';
 
 /**
  * 根据当前滑块位置确定 Hue（色相）的值
@@ -26,7 +26,7 @@ let generateHue = function(info, direction) {
 
 let Hue = BaseComponent.extend({
     name: 'hue',
-    template: tpl,
+    template,
     config(data) {
         data.direction = data.direction || 'horizontal';
         this.supr(data);

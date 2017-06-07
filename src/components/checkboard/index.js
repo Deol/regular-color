@@ -1,5 +1,5 @@
-let Regular = require('regularjs');
-let tpl = require('./view.html');
+import Regular from 'regularjs';
+import template from './view.html';
 
 let _checkboardCache = {};
 
@@ -11,14 +11,14 @@ let _checkboardCache = {};
  * @param {Number} size
  */
 function renderCheckboard(c1, c2, size) {
-  // Dont Render On Server
+    // Dont Render On Server
     if (typeof document === 'undefined') {
         return null;
     }
     let canvas = document.createElement('canvas');
     canvas.width = canvas.height = size * 2;
     let ctx = canvas.getContext('2d');
-  // If no context can be found, return early.
+    // If no context can be found, return early.
     if (!ctx) {
         return null;
     }
@@ -52,7 +52,7 @@ function getCheckboard(c1, c2, size) {
 
 let Checkboard = Regular.extend({
     name: 'checkboard',
-    template: tpl,
+    template,
     config(data) {
         data.size = data.size || 8;
         data.white = data.white || '#fff';

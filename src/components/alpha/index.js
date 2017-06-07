@@ -1,11 +1,11 @@
-let BaseComponent = require('../../base/component');
-let tpl = require('./view.html');
+import BaseComponent from '../../base/component';
+import template from './view.html';
 
-let checkboard = require('../checkboard/index');
+import checkboard from '../checkboard/index';
 
 let Alpha = BaseComponent.extend({
     name: 'alpha',
-    template: tpl,
+    template,
     handleChange(e, skip) {
         !skip && e.preventDefault();
         let container = this.$refs.container;

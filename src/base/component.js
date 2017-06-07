@@ -1,19 +1,21 @@
-let Regular = require('regularjs');
+import Regular from 'regularjs';
+
+const dom = Regular.dom;
 
 let BaseComponent = Regular.extend({
     handleMouseDown(e) {
         this.handleChange(e, true);
         this.handleChange = this.handleChange.bind(this);
         this.handleMouseUp = this.handleMouseUp.bind(this);
-        window.addEventListener('mousemove', this.handleChange);
-        window.addEventListener('mouseup', this.handleMouseUp);
+        dom.on(window, 'mousemove', this.handleChange);
+        dom.on(window, 'mouseup', this.handleMouseUp);
     },
     handleMouseUp() {
         this.unbindEventListeners();
     },
     unbindEventListeners() {
-        window.removeEventListener('mousemove', this.handleChange);
-        window.removeEventListener('mouseup', this.handleMouseUp);
+        dom.off(window, 'mousemove', this.handleChange);
+        dom.off(window, 'mouseup', this.handleMouseUp);
     }
 });
 

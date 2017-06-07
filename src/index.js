@@ -2,23 +2,23 @@
  * Created by Aeo on 2017/02/16.
  * Chrome Color for Regularjs
  */
-require('./mcss/index.mcss');
+import './mcss/index.mcss';
 
-let BaseComponent = require('./base/processor');
-let tpl = require('./view.html');
+import BaseComponent from './base/processor';
+import template from './view.html';
 
 // components
-let hue = require('./components/hue');
-let alpha = require('./components/alpha');
-let checkboard = require('./components/checkboard');
-let saturation = require('./components/saturation');
-let editableinput = require('./components/editable.input');
+import hue from './components/hue';
+import alpha from './components/alpha';
+import checkboard from './components/checkboard';
+import saturation from './components/saturation';
+import editableinput from './components/editable.input';
 
-let _ = require('./assets/util');
+import _ from './assets/util';
 
 let Color = BaseComponent.extend({
     name: 'color',
-    template: tpl,
+    template,
     config(data) {
         data.fields = ['hex', 'rgba', 'hsla'];
         data.fieldsIndex = 0;
