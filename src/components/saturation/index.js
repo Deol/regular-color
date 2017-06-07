@@ -1,34 +1,35 @@
 import BaseComponent from '../../base/component';
 import template from './view.html';
 
-let throttle = require('../../assets/util.js').throttle;
+import _ from '../../assets/util';
 
 let Saturation = BaseComponent.extend({
     name: 'saturation',
     template,
-    throttle: throttle((fn, data) => {
+    throttle: _.throttle((fn, data) => {
         return fn(data);
     }, 50),
     handleChange(e, skip) {
         !skip && e.preventDefault();
-        let container = this.$refs.container;
-        let containerWidth = container.clientWidth;
-        let containerHeight = container.clientHeight;
-        let left = (e.pageX || e.touches[0].pageX) - (container.getBoundingClientRect().left + window.pageXOffset);
-        let top = (e.pageY || e.touches[0].pageY) - (container.getBoundingClientRect().top + window.pageYOffset);
+        let content = this.$refs.content;
+        let left = _.getDistanceX(e, content);
+        let top = _.getDistanceY(e, content);
+        let container = _.getOffset(content);
 
         if (left < 0) {
             left = 0;
-        } else if (left > containerWidth) {
-            left = containerWidth;
-        } else if (top < 0) {
+        } else if (left > container.width) {
+            left = container.width;
+        }
+        
+        if (top < 0) {
             top = 0;
-        } else if (top > containerHeight) {
-            top = containerHeight;
+        } else if (top > container.height) {
+            top = container.height;
         }
 
-        let saturation = left * 100 / containerWidth;
-        let bright = -(top * 100 / containerHeight) + 100;
+        let saturation = left * 100 / container.width;
+        let bright = -(top * 100 / container.height) + 100;
 
         this.throttle(this.onChange.bind(this), {
             h: this.data.colors.hsl.h,

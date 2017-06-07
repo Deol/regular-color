@@ -127,4 +127,54 @@ _.limitDecimal = function(num, bits) {
     return Math.round(num * _.getMultiple(bits)) / _.getMultiple(bits);
 };
 
-module.exports = _;
+/**
+ * 获取节点的宽高
+ * @param  {Object} elem  传入节点
+ * @return {Object}       节点的宽高
+ */
+_.getOffset = function(elem) {
+    return {
+        width: elem.clientWidth,
+        height: elem.clientHeight
+    };
+};
+
+/**
+ * 获取兼容过的 pageX
+ * @param  {Object} e
+ * @return {Number}
+ */
+_.getPageX = (e) => {
+    return e.hasOwnProperty('pageX') ? e.pageX : e.touches[0].pageX;
+};
+
+/**
+ * 获取兼容过的 pageY
+ * @param  {Object} e
+ * @return {Number}
+ */
+_.getPageY = (e) => {
+    return e.hasOwnProperty('pageY') ? e.pageY : e.touches[0].pageY;
+};
+
+/**
+ * 获取鼠标点击处相对于目标节点的横坐标值
+ * @param  {Object} e           鼠标点击事件
+ * @param  {Object} container   目标节点
+ * @return {Number}             鼠标点击处距离目标节点起点的横坐标
+ */
+_.getDistanceX = (e, container) => {
+    return _.getPageX(e) - (container.getBoundingClientRect().left + window.pageXOffset);
+};
+
+/**
+ * 获取鼠标点击处相对于目标节点的纵坐标值
+ * @param  {Object} e           鼠标点击事件
+ * @param  {Object} container   目标节点
+ * @return {Number}             鼠标点击处距离目标节点起点的纵坐标
+ */
+_.getDistanceY = (e, container) => {
+    return _.getPageY(e) - (container.getBoundingClientRect().top + window.pageYOffset);
+};
+
+export default _;
