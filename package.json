@@ -1,6 +1,6 @@
 {
   "name": "regular-color",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Hot Zone of Regular Components",
   "main": "dist/color.min.js",
   "scripts": {
