@@ -5,15 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>EyeDropper</title>
+    <!-- import reset.css -->
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+    <!-- import color.css -->
+    <link rel="stylesheet" href="./dist/color.min.css">
 </head>
 <body>
     <div id="box"></div>
-    <!-- 引入regular.js -->
+    <!-- import RegularJS -->
     <script src="https://rawgit.com/regularjs/regular/master/dist/regular.js"></script>
+    <!-- import the color component -->
+    <script src="./dist/color.min.js"></script>
+    <!-- usage -->
     <script>
-        var color = require('./src/eyedropper.js');
         var Page = Regular.extend({
-            template: '<eyedropper colors={defaultProps} on-changeColor={this.changeColor($event)}></eyedropper>',
+            template: '<color colors={defaultProps} on-changeColor={this.changeColor($event)}></color>',
             config: function(data) {
                 data.defaultProps = {
                     hex: '#194d33',
@@ -43,6 +49,7 @@
                 this.data.defaultProps = colors;
             }
         });
+        Page.component('color', regularColor);
         new Page({data: {}}).$inject(document.getElementById('box'));
     </script>
 </body>
