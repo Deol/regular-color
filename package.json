@@ -1,7 +1,7 @@
 {
   "name": "regular-color",
-  "version": "0.0.4",
-  "description": "Hot Zone of Regular Components",
+  "version": "0.0.5",
+  "description": "Color of Regular Components",
   "main": "dist/color.min.js",
   "scripts": {
     "startdev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
