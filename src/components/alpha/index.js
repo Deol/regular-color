@@ -3,23 +3,17 @@ import template from './view.html';
 
 import checkboard from '../checkboard/index';
 
+import _ from '../../assets/util';
+
 let Alpha = BaseComponent.extend({
     name: 'alpha',
     template,
     handleChange(e, skip) {
         !skip && e.preventDefault();
-        let container = this.$refs.container;
-        let containerWidth = container.clientWidth;
-        let left = (e.pageX || e.touches[0].pageX) - (container.getBoundingClientRect().left + window.pageXOffset);
-        let a;
-
-        if (left < 0) {
-            a = 0;
-        } else if (left > containerWidth) {
-            a = 1;
-        } else {
-            a = left / containerWidth;
-        }
+        let content = this.$refs.content;
+        let container = _.getOffset(content);
+        let left = _.getDistanceX(e, content);
+        let a = _.limitScope(left / container.width, 0, 1);
 
         if (this.data.colors.a !== a) {
             this.$emit('change', {

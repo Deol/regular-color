@@ -5,18 +5,19 @@ import _ from '../assets/util';
 function _colorChange(colors, oldHue) {
     let color;
 
-    colors.a = _.limitScope(colors.a, 0, 1);
-    colors.a = _.limitDecimal(colors.a, 2);
-
-    if (colors.hex) {
+    if (colors && colors.hsl) {
+        color = tinycolor(colors.hsl);
+    } else if (colors && colors.hex && colors.hex.length > 0) {
         color = tinycolor(colors.hex);
-        color.setAlpha(colors.a);
     } else {
         color = tinycolor(colors);
     }
 
     let hsl = color.toHsl();
     let hsv = color.toHsv();
+
+    colors.a = _.limitScope(colors.a, 0, 1);
+    colors.a = _.limitDecimal(colors.a, 2);
 
     hsl.h = _.limitDecimal(hsl.h, 0);
     hsl.s = _.limitDecimal(hsl.s, 2);
@@ -42,15 +43,15 @@ function _colorChange(colors, oldHue) {
         hsv,
         oldHue: _.hasNum(colors.h) ? colors.h : (oldHue || hsl.h),
         source: colors.source,
-        a: colors.a
+        a: colors.a || color.getAlpha()
     };
 }
 
 let BaseComponent = Regular.extend({
     _colorChange,
     colorChange(colors, oldHue) {
-        this.data.colors = this._colorChange(colors, oldHue || this.data.oldHue);
         this.data.oldHue = this.data.colors.hsl.h;
+        this.data.colors = this._colorChange(colors, oldHue || this.data.oldHue);
         this.$emit('changeColor', this.data.colors);
     },
     isValidHex(hex) {

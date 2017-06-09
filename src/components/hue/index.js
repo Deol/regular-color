@@ -1,6 +1,8 @@
 import BaseComponent from '../../base/component';
 import template from './view.html';
 
+import _ from '../../assets/util';
+
 /**
  * 根据当前滑块位置确定 Hue（色相）的值
  * @param  {number} info.curPos  滑块位置，相对左边/相对上方
@@ -33,20 +35,21 @@ let Hue = BaseComponent.extend({
     },
     handleChange(e, skip) {
         !skip && e.preventDefault();
-        let container = this.$refs.container;
+        let content = this.$refs.content;
+        let container = _.getOffset(content);
         let direction = this.data.direction;
         let options = {
             vertical: {
-                curPos: (e.pageY || e.touches[0].pageY) - (container.getBoundingClientRect().top + window.pageYOffset),
+                curPos: _.getDistanceY(e, content),
                 minPos: 0,
-                maxPos: container.clientHeight,
+                maxPos: container.height,
                 minHue: 359,
                 maxHue: 0
             },
             horizontal: {
-                curPos: (e.pageX || e.touches[0].pageX) - (container.getBoundingClientRect().left + window.pageXOffset),
+                curPos: _.getDistanceX(e, content),
                 minPos: 0,
-                maxPos: container.clientWidth,
+                maxPos: container.width,
                 minHue: 0,
                 maxHue: 359
             }

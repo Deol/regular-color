@@ -1,6 +1,8 @@
 import Regular from 'regularjs';
 import template from './view.html';
 
+import _ from '../../assets/util';
+
 let EditableInput = Regular.extend({
     name: 'ed-in',
     template,
@@ -13,8 +15,13 @@ let EditableInput = Regular.extend({
     },
     handleChange(newVal) {
         let colors = {};
-        colors[this.data.label] = newVal;
-        this.$emit('change', colors);
+        let { label } = this.data;
+        colors[label] = newVal || 0;
+        if (colors.hex === undefined && _.hasNum(colors[label])) {
+            this.$emit('change', colors);
+        } else if (/^#([A-Fa-f0-9]{6})$/.test(newVal)) {
+            this.$emit('change', colors);
+        }
     },
     handleKeyDown(e) {
         let value = this.data.value;

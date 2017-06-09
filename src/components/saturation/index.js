@@ -11,32 +11,23 @@ let Saturation = BaseComponent.extend({
     }, 50),
     handleChange(e, skip) {
         !skip && e.preventDefault();
+        let data = this.data;
         let content = this.$refs.content;
         let left = _.getDistanceX(e, content);
         let top = _.getDistanceY(e, content);
         let container = _.getOffset(content);
 
-        if (left < 0) {
-            left = 0;
-        } else if (left > container.width) {
-            left = container.width;
-        }
-        
-        if (top < 0) {
-            top = 0;
-        } else if (top > container.height) {
-            top = container.height;
-        }
-
-        let saturation = left * 100 / container.width;
-        let bright = -(top * 100 / container.height) + 100;
+        left = _.limitScope(left, 0, container.width);
+        top = _.limitScope(top, 0, container.height);
+        data.saturation = left * 100 / container.width;
+        data.bright = -(top * 100 / container.height) + 100;
 
         this.throttle(this.onChange.bind(this), {
-            h: this.data.colors.hsl.h,
-            s: saturation,
-            v: bright,
-            a: this.data.colors.hsl.a,
-            source: 'rgb'
+            h: data.colors.hsl.h,
+            s: data.saturation,
+            v: data.bright,
+            a: data.colors.hsl.a,
+            source: 'hsva'
         });
     },
     onChange(colors) {
@@ -47,10 +38,18 @@ let Saturation = BaseComponent.extend({
             return `hsl(${this.data.colors.hsl.h}, 100%, 50%)`;
         },
         pointerTop() {
-            return `${-(this.data.colors.hsv.v * 100) + 100}%`;
+            let {colors, bright} = this.data;
+            if(bright) {
+                return `${-bright + 100}%`;
+            }
+            return `${-(colors.hsv.v * 100) + 100}%`;
         },
         pointerLeft() {
-            return `${this.data.colors.hsv.s * 100}%`;
+            let {colors, saturation} = this.data;
+            if(saturation) {
+                return `${saturation}%`;
+            }
+            return `${colors.hsv.s * 100}%`;
         }
     }
 });

@@ -105,7 +105,6 @@ _.limitScope = function(value, min, max) {
         return max;
     } 
     return value;
-    
 };
 
 /**
