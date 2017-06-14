@@ -1,4 +1,4 @@
-# regular-color(wip)
+# regular-color
 
 [![version](https://img.shields.io/npm/v/regular-color.svg)](https://www.npmjs.com/package/regular-color) 
 [![Build Status](https://img.shields.io/travis/Deol/regular-color.svg)](https://travis-ci.org/Deol/regular-color)
