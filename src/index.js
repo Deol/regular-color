@@ -15,6 +15,7 @@ import saturation from './components/saturation';
 import editableinput from './components/editable.input';
 
 import _ from './assets/util';
+import directive from './assets/directive';
 
 let Color = BaseComponent.extend({
     name: 'color',
@@ -24,7 +25,7 @@ let Color = BaseComponent.extend({
         data.fieldsIndex = 0;
         data.highlight = false;
 
-        data.colors = this._colorChange(data.colors);
+        Object.assign(data.colors, this._colorChange(data.colors));
 
         this.supr(data);
     },
@@ -75,7 +76,8 @@ let Color = BaseComponent.extend({
             return `rgba(${[rgba.r, rgba.g, rgba.b, rgba.a].join(',')})`;
         }
     }
-});
+}).directive(directive);
+
 Color.component('hue', hue);
 Color.component('alpha', alpha);
 Color.component('checkboard', checkboard);
