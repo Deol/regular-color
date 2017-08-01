@@ -48,6 +48,9 @@ Include the link and the script in the browser:
 
 # js
 //unpkg.com/regular-color/dist/color.min.js
+
+# or
+//unpkg.com/regular-color/dist/color.total.js
 ```
 
 ## Development
