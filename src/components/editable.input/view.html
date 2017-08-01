@@ -1,9 +1,14 @@
 <div class="editable-input">
   <input
-    r-model={value}
     class="editable-input-input"
-    on-keydown={this.handleKeyDown($event)}
     on-input={this.update($event)}
+    on-keydown={this.handleKeyDown($event)}
+    {#if label === 'hex'}
+    maxlength=7
+    r-model={value | dealValue}
+    {#else}
+    r-model={value}
+    {/if}
   >
   <span class="editable-input-label">{label}</span>
 </div>

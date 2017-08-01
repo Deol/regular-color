@@ -5,9 +5,10 @@
     "main": "dist/color.min.js",
     "scripts": {
         "startdev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
-        "pack": "cross-env NODE_ENV=production webpack --progress --hide-modules",
+        "pack": "cross-env NODE_ENV=production webpack --progress --hide-modules --config ./config/index.js",
+        "packall": "cross-env webpack --progress --hide-modules --config  ./config/webpack.total.js",
         "del": "rm -rf ./dist/**/*",
-        "build": "run-s del pack",
+        "build": "run-s del pack packall",
         "test": "eslint ./src",
         "precommit": "npm run test"
     },

@@ -46,6 +46,15 @@ let EditableInput = Regular.extend({
             e.preventDefault();
         }
     }
+}).filter({
+    dealValue: {
+        get(val) {
+            return val ? val : '#';
+        },
+        set(val) {
+            return val === '#' ? '' : val;
+        }
+    }
 });
 
 module.exports = EditableInput;
