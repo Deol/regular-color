@@ -5,7 +5,7 @@ let webpack = require('webpack');
 module.exports = {
     entry: { color: './src/index.js' },
     output: {
-        path: path.resolve(__dirname, './dist'),
+        path: path.resolve(__dirname, '../dist'),
         publicPath: '/dist/',
         filename: '[name].total.js',
         library: 'regularColor',

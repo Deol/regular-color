@@ -9,7 +9,7 @@ let isProd = env !== 'development';
 module.exports = {
     entry: {color: './src/index.js'},
     output: {
-        path: path.resolve(__dirname, './dist'),
+        path: path.resolve(__dirname, '../dist'),
         publicPath: '/dist/',
         filename: '[name].min.js',
         library: 'regularColor',
