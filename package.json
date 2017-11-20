@@ -4,9 +4,9 @@
     "description": "Color of Regular Components",
     "main": "dist/color.total.js",
     "scripts": {
-        "startdev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
-        "pack": "cross-env NODE_ENV=production webpack --progress --hide-modules --config ./config/index.js",
-        "packall": "cross-env webpack --progress --hide-modules --config  ./config/webpack.total.js",
+        "startdev": "cross-env NODE_ENV=development webpack-dev-server --config ./config/webpack.min.js --open --hot",
+        "pack": "cross-env NODE_ENV=production webpack --progress --hide-modules --config ./config/webpack.min.js",
+        "packall": "cross-env webpack --progress --hide-modules --config ./config/webpack.total.js",
         "del": "rm -rf ./dist/**/*",
         "build": "run-s del pack packall",
         "test": "eslint ./src",
